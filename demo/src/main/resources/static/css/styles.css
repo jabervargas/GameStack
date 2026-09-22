@@ -1,0 +1,35 @@
+:root {
+    --gamestack-ink: #18212b;
+    --gamestack-accent: #f4b942;
+    --gamestack-paper: #f7f4ed;
+}
+
+body {
+    background: var(--gamestack-paper);
+    color: var(--gamestack-ink);
+}
+
+.navbar {
+    background: var(--gamestack-ink);
+}
+
+.navbar-brand {
+    color: var(--gamestack-accent);
+}
+
+.navbar-brand:hover {
+    color: #ffd778;
+}
+
+.eyebrow {
+    color: #a76300;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.card {
+    border: 0;
+    border-top: 4px solid var(--gamestack-accent);
+}

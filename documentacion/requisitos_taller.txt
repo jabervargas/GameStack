@@ -1,0 +1,44 @@
+1. ¿Qué hacer?
+
+El taller te pide, en esencia:
+
+Crear el paquete controlador en el proyecto Spring Boot.
+Crear un método que procese una URL desde el controlador.
+Generar HTML dinámicamente.
+Crear un template para el listado de videojuegos.
+Diseñar la primera página utilizando Bootstrap.
+Utilizar el Starter Template de Bootstrap.
+Agregar una Navbar.
+Reemplazar el contenido inicial (H1).
+Utilizar el sistema de grillas de Bootstrap.
+Crear cards para mostrar los videojuegos.
+Agregar imágenes mediante img src.
+Completar el listado con varios videojuegos.
+Personalizar la Navbar con:
+- navbar-dark
+- bg-dark
+Agregar un ícono/logo en la parte izquierda de la Navbar.
+Guardar las imágenes propias dentro de static/img.
+Referenciar esas imágenes desde el HTML.
+
+
+3. Resultado que espera el profesor
+
+El resultado esperado es una página web dinámica de videojuegos, desarrollada con Spring Boot y diseñada con Bootstrap.
+
+Debe incluir:
+
+- Un controlador que procese una URL.
+- Generación de contenido HTML dinámico.
+- Un template para el listado de videojuegos.
+- Una Navbar.
+- Una estructura basada en el sistema de grillas de Bootstrap.
+- Cards para mostrar varios videojuegos.
+- Imágenes asociadas a los videojuegos.
+- Una Navbar personalizada con navbar-dark y bg-dark.
+- Un ícono o logo en la parte izquierda de la Navbar.
+- Recursos estáticos almacenados dentro de static/img.
+
+En resumen:
+
+Spring Boot → Controller → URL → Template/HTML → Bootstrap → Navbar + Grid + Cards + imágenes.

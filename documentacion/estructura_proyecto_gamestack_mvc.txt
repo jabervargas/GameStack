@@ -1,0 +1,82 @@
+ESTRUCTURA FINAL DEL PROYECTO - GameStack
+==============================================
+
+GameStack/
+├── .github/
+├── .vscode/
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/
+│       │       └── videojuegos/
+│       │           └── demo/
+│       │               ├── DemoApplication.java   (clase principal, @SpringBootApplication)
+│       │               ├── Config/
+│       │               ├── Controller/
+│       │               ├── Model/
+│       │               └── Service/
+│       │
+│       └── resources/
+│           ├── static/
+│           │   ├── css/
+│           │   │   └── styles.css
+│           │   └── img/
+│           │       └── (logo, imágenes de videojuegos, etc.)
+│           ├── templates/
+│           │   └── videojuegos.html
+│           └── application.properties
+│
+├── target/        (generada automáticamente por Maven, no se toca)
+└── pom.xml
+
+
+EXPLICACIÓN BREVE
+==================
+
+- java/         → todo el código Java (lógica del programa).
+- resources/    → todo lo que no es código Java: vistas HTML, CSS, imágenes y configuración.
+- Config/       → clases de configuración (@Configuration), opcional para casos avanzados.
+- Controller/   → clases que reciben las peticiones HTTP (URLs) y deciden qué mostrar.
+- Model/        → clases que representan los datos (ej. la clase Videojuego).
+- Service/      → lógica de negocio, si el proyecto crece.
+- templates/    → archivos HTML que se muestran al usuario (usando Thymeleaf y Bootstrap).
+- static/       → archivos que el navegador pide directo, sin pasar por Java (CSS, imágenes, JS).
+- application.properties → configuración del proyecto, incluida la conexión a MySQL.
+
+BOOTSTRAP
+=========
+
+- Bootstrap se incorpora en las vistas mediante su hoja de estilos CDN.
+- Los componentes y clases Bootstrap se usan directamente en templates/videojuegos.html.
+- El CSS propio se mantiene en static/css/styles.css para personalizaciones de GameStack.
+
+
+PAQUETE DEL PROYECTO
+=====================
+
+Basado en tu pom.xml:
+   groupId:    com.videojuegos
+   artifactId: gamestack
+
+Paquete Java resultante: com.videojuegos.demo
+Ruta de carpetas:        java/com/videojuegos/demo/
+
+
+NO OLVIDAR
+===========
+
+1. El archivo de configuración se llama "application.properties" (con doble p, sin errores de tipeo).
+2. DemoApplication.java debe tener en su primera línea:
+   package com.videojuegos.demo;
+   Esto debe coincidir EXACTO con la ruta de carpetas donde está guardado.
+3. Config, Controller, Model y Service van DENTRO de la carpeta demo (junto al archivo principal),
+   nunca sueltas directamente en src/main.
+4. La carpeta "target" es generada por Maven al compilar. No se crea ni se edita a mano.
+5. Las imágenes propias van en resources/static/img, y se referencian en el HTML así:
+   <img src="/img/nombre_imagen.png">
+6. El CSS propio va en resources/static/css, y se enlaza en el HTML así:
+   <link rel="stylesheet" href="/css/styles.css">
+7. Para conectar MySQL, agregar en pom.xml las dependencias:
+   - spring-boot-starter-data-jpa
+   - mysql-connector-j
+8. La conexión a la base de datos se configura en application.properties (no existe una carpeta "db").

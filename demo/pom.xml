@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.videojuegos</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>gamestack</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
+	<name>GameStack</name>
+	<description>Catalogo de videojuegos con Spring MVC y Bootstrap</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-                <start-class>com.videojuegos.demo</start-class>
+				<start-class>com.videojuegos.demo.DemoApplication</start-class>
 		<java.version>22</java.version>
 	</properties>
 	<dependencies>
