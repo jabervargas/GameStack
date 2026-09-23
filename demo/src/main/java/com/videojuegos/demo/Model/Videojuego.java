@@ -1,26 +1,61 @@
 package com.videojuegos.demo.Model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "videojuegos")
 public class Videojuego {
 
-    private final String titulo;
-    private final String genero;
-    private final int anio;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public Videojuego(String titulo, String genero, int anio) {
+    private String titulo;
+
+    @Column(length = 1000)
+    private String descripcion;
+
+    private String urlImagen;
+
+    public Videojuego() {
+    }
+
+    public Videojuego(String titulo, String descripcion, String urlImagen) {
         this.titulo = titulo;
-        this.genero = genero;
-        this.anio = anio;
+        this.descripcion = descripcion;
+        this.urlImagen = urlImagen;
+    }
+
+    // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public String getGenero() {
-        return genero;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public int getAnio() {
-        return anio;
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -11,17 +11,14 @@
     <title>GameStack</title>
 
     <style>
-        /* Ajuste de contenedor de la tarjeta */
         .card-game {
             position: relative;
             overflow: hidden;
             border-radius: 8px;
             height: 380px;
-            /* Altura uniforme para todas las portadas */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        /* La imagen ocupa todo el tamaño de la tarjeta */
         .card-game img {
             width: 100%;
             height: 100%;
@@ -29,12 +26,10 @@
             transition: transform 0.4s ease;
         }
 
-        /* Efecto de zoom ligero a la imagen al pasar el mouse */
         .card-game:hover img {
             transform: scale(1.1);
         }
 
-        /* Capa con la información (oculta de inicio) */
         .card-overlay {
             position: absolute;
             top: 0;
@@ -46,7 +41,6 @@
             opacity: 0;
             transition: opacity 0.4s ease;
             background: rgba(0, 0, 0, 0.85);
-            /* Fondo oscuro transparente */
             color: white;
             display: flex;
             flex-direction: column;
@@ -56,7 +50,6 @@
             text-align: center;
         }
 
-        /* Al pasar el cursor, aparece la información */
         .card-game:hover .card-overlay {
             opacity: 1;
         }
@@ -64,74 +57,43 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="img/logo-GameStack.png" alt="Bootstrap" width="30" height="24">
-                GAMESTACK</a>
+    <!-- BARRA DE NAVEGACIÓN CON FORMULARIO DE BÚSQUEDA A LA BD -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="/">GameStack</a>
+
+            <form class="d-flex ms-auto" action="/" method="get">
+                <input class="form-control me-2" type="search" name="buscar" placeholder="Buscar juego..."
+                    th:value="${palabraBuscada}">
+                <button class="btn btn-outline-light" type="submit">Buscar</button>
+            </form>
         </div>
     </nav>
 
     <div class="container my-4">
-        <div class="row g-4">
 
-            <!-- TARJETA 1 -->
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="card-game">
-                    <img src="https://static.wikia.nocookie.net/esgta/images/0/0f/Grand_Theft_Auto_Vice_City.JPG/revision/latest?cb=20161127222945"
-                        alt="Portada de GTA Vice City">
-                    <div class="card-overlay">
-                        <h5 class="fw-bold mb-2">GTA: Vice City</h5>
-                        <p class="small text-light mb-3">Videojuego de acción y aventura de mundo abierto desarrollado
-                            por Rockstar North.</p>
-                        <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TARJETA 2 -->
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="card-game">
-                    <img src="https://media.vandal.net/ivandal/11/60/1146x600/53/5380/200692523656_1.jpg"
-                        alt="Portada de PES 6">
-                    <div class="card-overlay">
-                        <h5 class="fw-bold mb-2">PES 6</h5>
-                        <p class="small text-light mb-3">Videojuego de fútbol desarrollado y publicado por Konami para
-                            PlayStation 2 en 2006.</p>
-                        <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TARJETA 3 -->
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="card-game">
-                    <img src="https://m.media-amazon.com/images/M/MV5BYzlmZmUyMzEtYjY1Yy00MjJiLTkzMjctM2JhNzVmYTlhNjJhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                        alt="Portada de PES 2013">
-                    <div class="card-overlay">
-                        <h5 class="fw-bold mb-2">PES 2013</h5>
-                        <p class="small text-light mb-3">Videojuego de fútbol de Konami que incorpora el sistema PES
-                            FullControl.</p>
-                        <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TARJETA 4 -->
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="card-game">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKsk8WIMmcHNofk2EnENXPoY5e55eDtlQxTfuagEZWUA820lsSDRjnNPCE&s=10"
-                        alt="Portada de COD 4">
-                    <div class="card-overlay">
-                        <h5 class="fw-bold mb-2">Call of Duty 4</h5>
-                        <p class="small text-light mb-3">Videojuego de disparos en primera persona publicado por
-                            Activision en 2007.</p>
-                        <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
-                    </div>
-                </div>
-            </div>
-
+        <!-- AVISO SI NO SE ENCUENTRAN JUEGOS EN LA BASE DE DATOS -->
+        <div th:if="${#lists.isEmpty(videojuegos)}" class="alert alert-warning text-center my-5 shadow-sm" role="alert">
+            <h4 class="alert-heading fw-bold">¡Juego no disponible!</h4>
+            <p class="mb-0">El juego que buscas no se encuentra en nuestra base de datos.</p>
+            <hr>
+            <a href="/" class="btn btn-warning btn-sm fw-bold">Ver todos los juegos</a>
         </div>
+
+        <!-- MUESTRA LAS TARJETAS SI SE ENCONTRARON RESULTADOS -->
+        <div class="row g-4" th:if="${!#lists.isEmpty(videojuegos)}">
+            <div class="col-12 col-sm-6 col-md-3" th:each="juego : ${videojuegos}">
+                <div class="card-game">
+                    <img th:src="${juego.urlImagen}" th:alt="${juego.titulo}">
+                    <div class="card-overlay">
+                        <h5 class="fw-bold mb-2" th:text="${juego.titulo}"></h5>
+                        <p class="small text-light mb-3" th:text="${juego.descripcion}"></p>
+                        <a href="#" class="btn btn-primary btn-sm">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Bootstrap Bundle JS -->
